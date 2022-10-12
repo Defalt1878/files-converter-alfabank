@@ -12,9 +12,9 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        final String sourcePath = "C:\\Users\\Defalt\\Desktop\\source.xlsx";
-        final String samplePath = "C:\\Users\\Defalt\\Desktop\\sample.xlsx";
-        final String resultPath = "C:\\Users\\Defalt\\Desktop\\result.xlsx";
+        final String sourcePath = "src/main/resources/source.xlsx";
+        final String samplePath = "src/main/resources/sample.xlsx";
+        final String resultPath = "src/main/resources/result.xlsx";
 
         try (
             var converter = new ExcelConverter(new XSSFWorkbook(sourcePath), new XSSFWorkbook(samplePath));
@@ -31,7 +31,7 @@ public class Main {
             converter.addModifier(new ColumnsShifter(8, 12));
             converter.addModifier(new ColumnsDateCombiner(new int[]{10, 11}, 10));
             converter.addModifier(new ColumnsDateCombiner(new int[]{12, 13}, 11));
-            converter.addModifier(new ColumnsDateDivider(14, 14, 15));
+            converter.addModifier(new ColumnsDateDivider(14, new int[]{14, 15}));
             var result = converter.getResult();
             result.write(outputStream);
         } catch (IOException e) {

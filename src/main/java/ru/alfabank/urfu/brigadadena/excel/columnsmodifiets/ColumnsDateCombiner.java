@@ -35,9 +35,7 @@ public class ColumnsDateCombiner extends ColumnsModifier {
 
     private static double tryGetNumericDate(Cell cell) {
         //TODO Создать адекватные исключения
-        if (cell.getCellType() != CellType.NUMERIC)
-            throw new IllegalArgumentException();
-        if (!DateUtil.isCellDateFormatted(cell))
+        if (cell.getCellType() != CellType.NUMERIC || !DateUtil.isCellDateFormatted(cell))
             throw new IllegalArgumentException();
 
         return cell.getNumericCellValue();

@@ -8,13 +8,11 @@ import ru.alfabank.urfu.brigadadena.excel.util.CellCopyUtils;
 
 public class ColumnsDateDivider extends ColumnsModifier {
     private final int sourceColumnNum;
-    private final int sampleDateColumnNum;
-    private final int sampleTimeColumnNum;
+    private final int[] sampleColumnNums;
 
-    public ColumnsDateDivider(int sourceColumnNum, int sampleDateColumnNum, int sampleTimeColumnNum) {
+    public ColumnsDateDivider(int sourceColumnNum, int[] sampleColumnNums) {
         this.sourceColumnNum = sourceColumnNum;
-        this.sampleDateColumnNum = sampleDateColumnNum;
-        this.sampleTimeColumnNum = sampleTimeColumnNum;
+        this.sampleColumnNums = sampleColumnNums;
     }
 
     @Override
@@ -23,17 +21,16 @@ public class ColumnsDateDivider extends ColumnsModifier {
         if (sourceCell.getCellType() != CellType.NUMERIC || !DateUtil.isCellDateFormatted(sourceCell))
             throw new IllegalArgumentException(); //TODO адекватные исключения
 
-        var dateTime = sourceCell.getLocalDateTimeCellValue();
+        var date = sourceCell.getNumericCellValue();
 
-        var resultDateCell = sheets.result().getRow(rowNum).createCell(sampleDateColumnNum);
-        var sampleDateCell = sheets.sample().getRow(rowNum).getCell(sampleDateColumnNum);
-        CellCopyUtils.copyCellStyle(sampleDateCell, resultDateCell, copyContext);
-        resultDateCell.setCellValue(dateTime);
+        for (var columnNum : sampleColumnNums) {
+            var sampleCell = sheets.sample().getRow(rowNum).getCell(columnNum);
+            if (sampleCell.getCellType() != CellType.NUMERIC || !DateUtil.isCellDateFormatted(sampleCell))
+                throw new IllegalArgumentException();
 
-        var resultTimeCell = sheets.result().getRow(rowNum).createCell(sampleTimeColumnNum);
-        var sampleTimeCell = sheets.sample().getRow(rowNum).getCell(sampleTimeColumnNum);
-        CellCopyUtils.copyCellStyle(sampleTimeCell, resultTimeCell, copyContext);
-        resultTimeCell.setCellValue(dateTime);
-        //TODO отрефакторить
+            var resultCell = sheets.result().getRow(rowNum).createCell(columnNum);
+            CellCopyUtils.copyCellStyle(sampleCell, resultCell, copyContext);
+            resultCell.setCellValue(date);
+        }
     }
 }
