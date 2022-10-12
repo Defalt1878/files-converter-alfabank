@@ -5,19 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a19ec1f5-ef67-4d23-a318-42d0983d2b1c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsDateCombiner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsDateDivider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsModifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsShifter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsSimpleCombiner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsSimpleDivider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/converter/ExcelConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/converter/ProcessingSheets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/util/CellCopyUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/result.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sample.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/source.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,7 +41,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2G1ePWHU3XcYPPYd6EjhC8D76zT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,9 +53,38 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MyData\Programming\Java\FilesConverterAlfaBank\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.alfabank.urfu.brigadadena.excel.columnsmodifiets" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.alfabank.urfu.brigadadena.Main" />
+      <module name="FilesConverterAlfaBank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.alfabank.urfu.brigadadena.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -47,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665560496738</updated>
-      <workItem from="1665560499130" duration="557000" />
+      <workItem from="1665560499130" duration="33577000" />
     </task>
     <servers />
   </component>
@@ -64,5 +110,20 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="cell" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
