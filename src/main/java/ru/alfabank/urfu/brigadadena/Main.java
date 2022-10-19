@@ -1,12 +1,9 @@
 package ru.alfabank.urfu.brigadadena;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import ru.alfabank.urfu.brigadadena.excel.columnsmodifiets.ColumnsDateCombiner;
-import ru.alfabank.urfu.brigadadena.excel.columnsmodifiets.ColumnsDateDivider;
-import ru.alfabank.urfu.brigadadena.excel.columnsmodifiets.ColumnsShifter;
-import ru.alfabank.urfu.brigadadena.excel.columnsmodifiets.ColumnsSimpleDivider;
 import ru.alfabank.urfu.brigadadena.excel.converter.ExcelConverter;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -17,23 +14,23 @@ public class Main {
         final String resultPath = "src/main/resources/result.xlsx";
 
         try (
-            var converter = new ExcelConverter(new XSSFWorkbook(sourcePath), new XSSFWorkbook(samplePath));
-            var outputStream = new FileOutputStream(resultPath)
+            var source = new FileInputStream(sourcePath);
+            var sample = new FileInputStream(samplePath)
         ) {
-            converter.addModifier(new ColumnsSimpleDivider(0, new int[]{0, 1, 2}, " "));
-            converter.addModifier(new ColumnsShifter(1, 5));
-            converter.addModifier(new ColumnsShifter(2, 6));
-            converter.addModifier(new ColumnsShifter(3, 4));
-            converter.addModifier(new ColumnsShifter(4, 8));
-            converter.addModifier(new ColumnsShifter(5, 7));
-            converter.addModifier(new ColumnsShifter(6, 9));
-            converter.addModifier(new ColumnsShifter(7, 13));
-            converter.addModifier(new ColumnsShifter(8, 12));
-            converter.addModifier(new ColumnsDateCombiner(new int[]{10, 11}, 10));
-            converter.addModifier(new ColumnsDateCombiner(new int[]{12, 13}, 11));
-            converter.addModifier(new ColumnsDateDivider(14, new int[]{14, 15}));
-            var result = converter.getResult();
-            result.write(outputStream);
+            var sourceWB = new XSSFWorkbook(source);
+            var sampleWB = new XSSFWorkbook(sample);
+            var converter = new ExcelConverter(sourceWB, sampleWB);
+            converter.divideColumns(0, " ");
+            converter.connectColumns(0, 0);
+            converter.connectColumns(1, 1);
+            converter.connectColumns(2, 2);
+            converter.connectColumns(3, 3);
+            converter.cancelLast();
+
+            var result = converter.getFinalResult();
+            try (var outputStream = new FileOutputStream(resultPath)) {
+                result.write(outputStream);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -4,11 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a19ec1f5-ef67-4d23-a318-42d0983d2b1c" name="Changes" comment="A working system for converting .xlsx files has been implemented.">
+    <list default="true" id="a19ec1f5-ef67-4d23-a318-42d0983d2b1c" name="Changes" comment="Some fixes and refactoring.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetConnector/ColumnsConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetConnector/SheetConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetmodifier/SheetModifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetmodifier/columnscommands/ColumnsCombiner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetmodifier/columnscommands/ColumnsDivider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetmodifier/columnscommands/ColumnsModifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/util/CellHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsDateCombiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsDateCombiner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsDateDivider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsDateDivider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsDateCombiner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsDateDivider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsModifier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsShifter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsSimpleCombiner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/columnsmodifiets/ColumnsSimpleDivider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/converter/ExcelConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/converter/ExcelConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/converter/ProcessingSheets.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/util/CellCopyUtils.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/result.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/result.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/sample.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sample.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/source.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/source.xlsx" afterDir="false" />
@@ -87,7 +101,12 @@
       <updated>1665560496738</updated>
       <workItem from="1665560499130" duration="33701000" />
       <workItem from="1665610353196" duration="242000" />
-      <workItem from="1665610608379" duration="79000" />
+      <workItem from="1665610608379" duration="185000" />
+      <workItem from="1665667453861" duration="25938000" />
+      <workItem from="1665775509688" duration="30000" />
+      <workItem from="1665830674812" duration="6000" />
+      <workItem from="1665920082471" duration="13000" />
+      <workItem from="1666179228034" duration="14124000" />
     </task>
     <task id="LOCAL-00001" summary="A working system for converting .xlsx files has been implemented.">
       <created>1665610305651</created>
@@ -96,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665610305651</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Some fixes and refactoring.">
+      <created>1665610776340</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1665610776340</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,7 +141,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="A working system for converting .xlsx files has been implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="A working system for converting .xlsx files has been implemented." />
+    <MESSAGE value="Some fixes and refactoring." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some fixes and refactoring." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -124,6 +151,20 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="8" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
