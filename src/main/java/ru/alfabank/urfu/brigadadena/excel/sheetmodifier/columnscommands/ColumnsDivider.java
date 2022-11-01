@@ -1,7 +1,7 @@
 package ru.alfabank.urfu.brigadadena.excel.sheetmodifier.columnscommands;
 
 import org.apache.poi.ss.usermodel.Sheet;
-import ru.alfabank.urfu.brigadadena.excel.util.CellHelper;
+import ru.alfabank.urfu.brigadadena.excel.util.ExcelHelper;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -50,7 +50,7 @@ public class ColumnsDivider extends ColumnsModifier {
                 continue;
             }
 
-            var data = CellHelper.getCellStringValue(row.getCell(columnNum)).split(Pattern.quote(splitter));
+            var data = ExcelHelper.getCellStringValue(row.getCell(columnNum)).split(Pattern.quote(splitter));
             result.put(row.getRowNum(), data);
             lengths.add(data.length);
         }
@@ -68,11 +68,11 @@ public class ColumnsDivider extends ColumnsModifier {
 
     private void setHeader(Sheet sheet) {
         var header = sheet.getRow(0);
-        var columnName = CellHelper.getCellStringValue(header.getCell(columnNum));
+        var columnName = ExcelHelper.getCellStringValue(header.getCell(columnNum));
         var columnNames = columnName.split(" \\+ ");
         if (columnNames.length != newColumnsNum.length)
             columnNames = IntStream.rangeClosed(1, newColumnsNum.length)
-                .mapToObj(i -> String.format("%s [%s]", columnName, i + 1))
+                .mapToObj(i -> String.format("%s [%s]", columnName, i))
                 .toArray(String[]::new);
 
         for (var i = 0; i < newColumnsNum.length; i++) {

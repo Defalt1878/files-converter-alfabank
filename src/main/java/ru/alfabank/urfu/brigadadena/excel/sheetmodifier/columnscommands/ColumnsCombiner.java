@@ -1,7 +1,7 @@
 package ru.alfabank.urfu.brigadadena.excel.sheetmodifier.columnscommands;
 
 import org.apache.poi.ss.usermodel.Sheet;
-import ru.alfabank.urfu.brigadadena.excel.util.CellHelper;
+import ru.alfabank.urfu.brigadadena.excel.util.ExcelHelper;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -49,7 +49,7 @@ public class ColumnsCombiner extends ColumnsModifier {
             }
             var data = Arrays.stream(columnNums)
                 .mapToObj(row::getCell)
-                .map(CellHelper::getCellStringValue)
+                .map(ExcelHelper::getCellStringValue)
                 .collect(Collectors.joining(splitter));
 
             result.put(row.getRowNum(), data);
@@ -64,7 +64,7 @@ public class ColumnsCombiner extends ColumnsModifier {
         var header = sheet.getRow(0);
         var columnNames = Arrays.stream(columnNums)
             .mapToObj(header::getCell)
-            .map(CellHelper::getCellStringValue)
+            .map(ExcelHelper::getCellStringValue)
             .toList();
         var cell = header.createCell(newColumnNum);
         String resultName = null;

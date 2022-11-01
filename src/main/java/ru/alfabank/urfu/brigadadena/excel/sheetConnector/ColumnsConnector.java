@@ -2,22 +2,26 @@ package ru.alfabank.urfu.brigadadena.excel.sheetConnector;
 
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Sheet;
-import ru.alfabank.urfu.brigadadena.excel.util.CellHelper;
+import ru.alfabank.urfu.brigadadena.excel.util.ExcelHelper;
 
 import java.util.stream.IntStream;
 
 public class ColumnsConnector {
     private final int srcColumnNum;
     private final int dstColumnNum;
+    private final CellStyle dstStyle;
 
     public int getSrcColumnNum() {
         return srcColumnNum;
     }
+
     public int getDstColumnNum() {
         return dstColumnNum;
     }
 
-    private final CellStyle dstStyle;
+    public CellStyle getDstStyle() {
+        return dstStyle;
+    }
 
     public ColumnsConnector(int srcColumnNum, int dstColumnNum, CellStyle dstStyle) {
         this.srcColumnNum = srcColumnNum;
@@ -40,6 +44,6 @@ public class ColumnsConnector {
         var dstCell = dstRow.createCell(dstColumnNum);
 
         dstCell.setCellStyle(dstStyle);
-        CellHelper.copyCellValue(srcCell, dstCell);
+        ExcelHelper.copyCellValue(srcCell, dstCell);
     }
 }

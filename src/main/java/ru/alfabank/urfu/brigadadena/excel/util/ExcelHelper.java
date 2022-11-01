@@ -4,7 +4,7 @@ import org.apache.poi.ss.usermodel.*;
 
 import java.text.SimpleDateFormat;
 
-public class CellHelper {
+public class ExcelHelper {
     private static final DataFormatter dataFormatter = new DataFormatter();
     private static final SimpleDateFormat sdf = new SimpleDateFormat();
 
@@ -51,6 +51,22 @@ public class CellHelper {
             default:
                 throw new IllegalArgumentException("Invalid cell type " + srcCell.getCellType());
         }
+    }
+
+    public static String[][] toStringMatrix(Sheet sheet) {
+        var height = sheet.getPhysicalNumberOfRows();
+        var width = sheet.getRow(0).getLastCellNum() - 1;
+        var result = new String[height][width];
+        var resultRowNum = 0;
+        for (var row : sheet) {
+            for (var cellNum = 0; cellNum < width; cellNum++) {
+                var cell = row.getCell(cellNum);
+                result[resultRowNum][cellNum] = cell == null ? "" : getCellStringValue(cell);
+            }
+            resultRowNum++;
+        }
+
+        return result;
     }
 
     public static void copyCellStyle(Cell srcCell, Cell destCell, CellCopyContext context) {

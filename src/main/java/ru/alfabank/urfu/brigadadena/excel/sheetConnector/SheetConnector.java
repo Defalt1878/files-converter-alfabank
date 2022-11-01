@@ -30,12 +30,34 @@ public class SheetConnector {
         columnsConnectors.get(columnsConnectors.size() - 1).apply(src, dst, rowsCount);
     }
 
-    public boolean removeSrcIntersections(int[] srsColumnsNums) {
-        var prevSize = columnsConnectors.size();
-        var numsSet = Arrays.stream(srsColumnsNums).boxed().collect(Collectors.toSet());
-        columnsConnectors = columnsConnectors.stream()
-            .filter(connector -> !numsSet.contains(connector.getSrcColumnNum()))
-            .collect(Collectors.toList());
-        return prevSize != columnsConnectors.size();
+    public void updateConnectors(int[] srsColumnsNums, int[] resultColumnNums) {
+        var srcNumsSet = Arrays.stream(srsColumnsNums).boxed().collect(Collectors.toSet());
+        var resultNumsSet = Arrays.stream(resultColumnNums).boxed().collect(Collectors.toSet());
+
+        var updatedConnectors = new ArrayList<ColumnsConnector>();
+        for (var columnsConnector : columnsConnectors) {
+            var srcColumnNum = columnsConnector.getSrcColumnNum();
+            if (srcNumsSet.contains(srcColumnNum))
+                continue;
+
+            var srcNumsBefore = srcNumsSet.stream().filter(num -> num <= srcColumnNum).count();
+            var resultNumsBefore = resultNumsSet.stream().filter(num -> num <= srcColumnNum).count();
+            var difference = (int) (resultNumsBefore - srcNumsBefore);
+            if (difference == 0)
+                updatedConnectors.add(columnsConnector);
+            else if (difference > 0) {
+                updatedConnectors.add(new ColumnsConnector(
+                    srcColumnNum + resultNumsSet.size() - srcNumsSet.size(),
+                    columnsConnector.getDstColumnNum(),
+                    columnsConnector.getDstStyle()
+                ));
+            } else
+                updatedConnectors.add(new ColumnsConnector(
+                    srcColumnNum + difference,
+                    columnsConnector.getDstColumnNum(),
+                    columnsConnector.getDstStyle()
+                ));
+        }
+        this.columnsConnectors = updatedConnectors;
     }
 }
