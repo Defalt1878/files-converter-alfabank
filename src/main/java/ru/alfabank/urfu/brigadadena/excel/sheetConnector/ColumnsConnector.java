@@ -31,7 +31,6 @@ public class ColumnsConnector {
 
     public void apply(Sheet src, Sheet dst, int rowsCount) {
         IntStream.rangeClosed(1, Math.min(rowsCount, src.getLastRowNum()))
-            .parallel()
             .forEach(rowNum -> modify(src, dst, rowNum));
     }
 

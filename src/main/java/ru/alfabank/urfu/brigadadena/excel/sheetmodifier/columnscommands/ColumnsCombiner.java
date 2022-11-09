@@ -91,20 +91,21 @@ public class ColumnsCombiner extends ColumnsModifier {
     private void shiftColumns(Sheet sheet) {
         var sorted = Arrays.stream(columnNums).skip(1).sorted().toArray();
         var shiftSize = 1;
-        var lastColumnNum = sorted[0];
+        var lastModifiedColNum = sorted[0];
         for (var i = 1; i < sorted.length; i++) {
             var columnNum = sorted[i];
-            if (lastColumnNum + 1 == columnNum) {
+            if (lastModifiedColNum + 1 == columnNum) {
                 shiftSize++;
             } else {
                 sheet.shiftColumns(columnNum + 1, sheet.getRow(0).getLastCellNum(), -shiftSize);
                 shiftSize = 1;
             }
 
-            lastColumnNum = columnNum;
+            lastModifiedColNum = columnNum;
         }
         deleteOldCells(sheet);
-        sheet.shiftColumns(lastColumnNum + 1, sheet.getRow(0).getLastCellNum(), -shiftSize);
+        if (lastModifiedColNum < sheet.getRow(0).getLastCellNum())
+            sheet.shiftColumns(lastModifiedColNum + 1, sheet.getRow(0).getLastCellNum(), -shiftSize);
     }
 
     private void deleteOldCells(Sheet sheet) {

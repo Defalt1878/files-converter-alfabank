@@ -55,7 +55,7 @@ public class ExcelHelper {
 
     public static String[][] toStringMatrix(Sheet sheet) {
         var height = sheet.getPhysicalNumberOfRows();
-        var width = sheet.getRow(0).getLastCellNum() - 1;
+        var width = sheet.getRow(0).getLastCellNum();
         var result = new String[height][width];
         var resultRowNum = 0;
         for (var row : sheet) {

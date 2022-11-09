@@ -29,10 +29,15 @@ public class Main {
                 outputResult(converter);
                 System.out.print("Input command: ");
                 var cmd = scanner.nextLine();
-                if (executeCommand(cmd, converter))
-                    break;
+                try {
+                    if (executeCommand(cmd, converter))
+                        break;
+                } catch (IOException e) {
+                    throw e;
+                } catch (Exception e) {
+                    System.out.println("Command error!");
+                }
             }
-
             var result = converter.getFinalResult();
             try (var outputStream = new FileOutputStream(resultPath)) {
                 result.write(outputStream);
@@ -41,6 +46,7 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
+
 
     private static boolean executeCommand(String command, ExcelConverter converter) throws IOException {
         var parts = command.split(" ");
@@ -71,8 +77,7 @@ public class Main {
                 return true;
             }
             default -> {
-                System.out.println("Command error!");
-                return false;
+                throw new RuntimeException();
             }
         }
         return false;
@@ -89,9 +94,14 @@ public class Main {
     }
 
     private static void printTable(String[][] table) {
-        for (var line : table) {
-            for (var value : line)
-                System.out.printf("%-30s", value);
+        for (int i = 0; i < table[0].length; i++)
+            System.out.printf("%-30s ", String.format("(%s) %s", i + 1, table[0][i]));
+        System.out.println();
+
+        for (int j = 1; j < table.length; j++) {
+            var line = table[j];
+            for (var cell : line)
+                System.out.printf("%-30s ", cell);
             System.out.println();
         }
     }
