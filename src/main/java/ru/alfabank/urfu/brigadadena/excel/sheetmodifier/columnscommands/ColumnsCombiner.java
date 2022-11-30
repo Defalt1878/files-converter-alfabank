@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class ColumnsCombiner extends ColumnsModifier {
     private final int[] columnNums;
@@ -41,19 +42,16 @@ public class ColumnsCombiner extends ColumnsModifier {
 
     private Map<Integer, String> getRowsData(Sheet sheet) {
         var result = new HashMap<Integer, String>();
-        var skipFirst = true;
-        for (var row : sheet) {
-            if (skipFirst) {
-                skipFirst = false;
-                continue;
-            }
-            var data = Arrays.stream(columnNums)
-                .mapToObj(row::getCell)
-                .map(ExcelHelper::getCellStringValue)
-                .collect(Collectors.joining(splitter));
-
-            result.put(row.getRowNum(), data);
-        }
+        StreamSupport.stream(sheet.spliterator(), false)
+            .skip(1)
+            .forEach(row -> result.put(
+                         row.getRowNum(),
+                         Arrays.stream(columnNums)
+                             .mapToObj(row::getCell)
+                             .map(ExcelHelper::getCellStringValue)
+                             .collect(Collectors.joining(splitter))
+                     )
+            );
 
         newColumnNum = columnNums[0];
 
@@ -89,21 +87,25 @@ public class ColumnsCombiner extends ColumnsModifier {
     }
 
     private void shiftColumns(Sheet sheet) {
-        var sorted = Arrays.stream(columnNums).skip(1).sorted().toArray();
+        deleteOldCells(sheet);
+        var sorted = Arrays.stream(columnNums)
+            .skip(1)
+            .map(i -> -i).sorted().map(i -> -i)
+            .toArray();
         var shiftSize = 1;
         var lastModifiedColNum = sorted[0];
         for (var i = 1; i < sorted.length; i++) {
             var columnNum = sorted[i];
-            if (lastModifiedColNum + 1 == columnNum) {
+            if (lastModifiedColNum - shiftSize == columnNum) {
                 shiftSize++;
-            } else {
-                sheet.shiftColumns(columnNum + 1, sheet.getRow(0).getLastCellNum(), -shiftSize);
-                shiftSize = 1;
+                continue;
             }
-
+            if (lastModifiedColNum < sheet.getRow(0).getLastCellNum())
+                sheet.shiftColumns(lastModifiedColNum + 1, sheet.getRow(0).getLastCellNum(), -shiftSize);
+            shiftSize = 1;
             lastModifiedColNum = columnNum;
         }
-        deleteOldCells(sheet);
+
         if (lastModifiedColNum < sheet.getRow(0).getLastCellNum())
             sheet.shiftColumns(lastModifiedColNum + 1, sheet.getRow(0).getLastCellNum(), -shiftSize);
     }

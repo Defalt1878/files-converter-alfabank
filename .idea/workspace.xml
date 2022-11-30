@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a19ec1f5-ef67-4d23-a318-42d0983d2b1c" name="Changes" comment="Bugs with cancel fixed. Added an example of console app">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetConnector/ColumnsConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetConnector/ColumnsConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetmodifier/columnscommands/ColumnsCombiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetmodifier/columnscommands/ColumnsCombiner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/util/ExcelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/util/ExcelHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/result.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/result.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/sample.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sample.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/source.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/source.xlsx" afterDir="false" />
@@ -47,7 +45,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
+    &quot;last_opened_file_path&quot;: &quot;D:/MyData/Programming/Java/AcademicPerformanceVisualization&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -104,6 +103,12 @@
       <workItem from="1667284668618" duration="4388000" />
       <workItem from="1667820854158" duration="3170000" />
       <workItem from="1667824168156" duration="494000" />
+      <workItem from="1667985274116" duration="187000" />
+      <workItem from="1667985470068" duration="63000" />
+      <workItem from="1667985542046" duration="1452000" />
+      <workItem from="1668327730119" duration="980000" />
+      <workItem from="1668333947913" duration="8000" />
+      <workItem from="1669792633637" duration="2521000" />
     </task>
     <task id="LOCAL-00001" summary="A working system for converting .xlsx files has been implemented.">
       <created>1665610305651</created>
@@ -168,10 +173,6 @@
           <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="8" />
         </breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
-          <option name="timeStamp" value="12" />
-        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -179,5 +180,9 @@
         <watch expression="cell" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
