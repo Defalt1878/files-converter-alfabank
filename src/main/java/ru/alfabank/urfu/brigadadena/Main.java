@@ -70,6 +70,10 @@ public class Main {
                 var resultNum = Integer.parseInt(parts[2]) - 1;
                 converter.connectColumns(sourceNum, resultNum);
             }
+            case "clear" -> {
+                var resultNum = Integer.parseInt(parts[1]) - 1;
+                converter.clearColumn(resultNum);
+            }
             case "cancel" -> {
                 converter.cancelLast();
             }

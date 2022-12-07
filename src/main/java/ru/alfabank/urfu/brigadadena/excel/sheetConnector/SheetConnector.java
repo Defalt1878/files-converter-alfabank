@@ -10,10 +10,6 @@ import java.util.stream.Collectors;
 public class SheetConnector {
     private List<ColumnsConnector> columnsConnectors = new ArrayList<>();
 
-    public SheetConnector() {
-
-    }
-
     public void newConnector(ColumnsConnector connector) {
         var intersection = columnsConnectors.stream()
             .filter(conn -> connector.getDstColumnNum() == conn.getDstColumnNum())
@@ -59,5 +55,15 @@ public class SheetConnector {
                 ));
         }
         this.columnsConnectors = updatedConnectors;
+    }
+
+    public boolean removeFor(int resultColumnNum) {
+        var toRemove = columnsConnectors.stream()
+            .filter(connector -> connector.getDstColumnNum() == resultColumnNum)
+            .findFirst();
+        if (toRemove.isEmpty())
+            return false;
+        columnsConnectors.remove(toRemove.get());
+        return true;
     }
 }

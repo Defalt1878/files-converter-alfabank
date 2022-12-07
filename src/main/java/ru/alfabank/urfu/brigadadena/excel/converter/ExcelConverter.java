@@ -61,12 +61,6 @@ public class ExcelConverter implements Closeable {
         handleModifier(new ColumnsDivider(columnNum, splitter));
     }
 
-    private void handleModifier(ColumnsModifier modifier) {
-        sheetModifier.newModifier(modifier);
-        sheetModifier.applyLastAdded(modifiableSource.getSheetAt(0));
-        updateConnectors(modifier.getColumnNums(), modifier.getNewColumnNums());
-    }
-
     public void cancelLast() throws IOException {
         var removed = sheetModifier.removeLast();
         if (removed != null) {
@@ -74,6 +68,19 @@ public class ExcelConverter implements Closeable {
             sheetModifier.applyAll(modifiableSource.getSheetAt(0));
             updateConnectors(removed.getNewColumnNums(), removed.getColumnNums());
         }
+    }
+
+    public void clearColumn(int resultColumnNum) {
+        if (!sheetConnector.removeFor(resultColumnNum))
+            return;
+        cutRows(result.getSheetAt(0), 1);
+        sheetConnector.applyAll(modifiableSource.getSheetAt(0), result.getSheetAt(0), 3);
+    }
+
+    private void handleModifier(ColumnsModifier modifier) {
+        sheetModifier.newModifier(modifier);
+        sheetModifier.applyLastAdded(modifiableSource.getSheetAt(0));
+        updateConnectors(modifier.getColumnNums(), modifier.getNewColumnNums());
     }
 
     private void updateConnectors(int[] srsColumnsNums, int[] resultColumnNums) {

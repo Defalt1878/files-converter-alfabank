@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a19ec1f5-ef67-4d23-a318-42d0983d2b1c" name="Changes" comment="Bugs with cancel fixed. Added an example of console app">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a19ec1f5-ef67-4d23-a318-42d0983d2b1c" name="Changes" comment="Columns combining bug fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetmodifier/columnscommands/ColumnsCombiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetmodifier/columnscommands/ColumnsCombiner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/result.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/result.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sample.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sample.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/source.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/source.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/converter/ExcelConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/converter/ExcelConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetConnector/SheetConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/alfabank/urfu/brigadadena/excel/sheetConnector/SheetConnector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +106,8 @@
       <workItem from="1667985542046" duration="1452000" />
       <workItem from="1668327730119" duration="980000" />
       <workItem from="1668333947913" duration="8000" />
-      <workItem from="1669792633637" duration="2521000" />
+      <workItem from="1669792633637" duration="2713000" />
+      <workItem from="1670398168054" duration="1063000" />
     </task>
     <task id="LOCAL-00001" summary="A working system for converting .xlsx files has been implemented.">
       <created>1665610305651</created>
@@ -138,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667289342606</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Columns combining bug fixed">
+      <created>1669795177833</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669795177833</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,7 +166,8 @@
     <MESSAGE value="Some fixes and refactoring." />
     <MESSAGE value="The work of the parser has been radically changed" />
     <MESSAGE value="Bugs with cancel fixed. Added an example of console app" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugs with cancel fixed. Added an example of console app" />
+    <MESSAGE value="Columns combining bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Columns combining bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
